@@ -39,6 +39,7 @@
   import FeatureView from './childComps/FeatureView'
 
   import {getHomeMultidata,getHomeGoods} from 'network/home'
+
   export default {
       name: "Home",
       data(){
@@ -76,10 +77,13 @@
         this.getHomeGoods('sell')
       },
       mounted() {
-        const refresh = this.debounce(this.$refs.scroll.refresh, 200)
-        this.$bus.$on('itemImgLoaded', () => {
-          refresh()
+        this.$bus.$on('imgLoad', ()=>{
+          this.$refs.scroll.refresh()
         })
+        // const newRefresh = this.debounce(this.$refs.scroll.refresh, 10)
+        // this.$bus.$on('homeItemImgLoad', () => {
+        //   newRefresh()
+        // })
       },
       destroyed() {
         console.log('Home组件被销毁')

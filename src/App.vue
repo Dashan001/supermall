@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <keep-alive>
+    <keep-alive exclude="Detail">
       <router-view></router-view>
     </keep-alive>
     <main-tabbar></main-tabbar>
@@ -21,3 +21,4 @@
 <style>
   @import 'assets/css/base.css'
 </style>
+
